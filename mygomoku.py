@@ -29,13 +29,14 @@ def Think(field):
             if GetDistance(best_position, CENTER) > GetDistance(position, CENTER):
                 best_position = position
 
-    #my_position = Judge4stone(i,j, field)
-    #if my_position != 0:
-        #best_position = my_position
+    my_position = Judge4stone(i,j, field)
+    if my_position != 0:
+        DebugPrint('!')
+        best_position = my_position
 
-    #my_position = JudgeEnemy4(i,j, field)
-    #if my_position != 0:
-        #best_position = my_position
+    my_position = JudgeEnemy4(i,j, field)
+    if my_position != 0:
+        best_position = my_position
 
     my_position = JudgeEnemy5(i,j, field)
     if my_position != 0:
@@ -97,7 +98,7 @@ def Judge5stone(orig_i, orig_j, field):
                 if field[i+k][j] == '.':
                     vacantpos = k+i
                 if field[i+k][j] == 'X':
-                    continue
+                    count_x = 0
             if count_x == 4:
                 print('dame')
                 return (vacantpos, j)
@@ -112,7 +113,7 @@ def Judge5stone(orig_i, orig_j, field):
                 if field[j][i+k] == '.':
                     vacantpos = k+i
                 if field[j][i+k] == 'X':
-                    continue
+                    count_x = 0
             if count_x == 4:
                 return (j, vacantpos)
 
@@ -129,7 +130,7 @@ def Judge4stone(orig_i, orig_j,field):
                 if field[i+k][j] == '.':
                     vacantpos = k+i
                 if field[i+k][j] == 'X':
-                    continue
+                    count_x = -1
             if count_x == 3:
                 return (vacantpos, j)
 
@@ -143,11 +144,11 @@ def Judge4stone(orig_i, orig_j,field):
                 if field[j][i+k] == '.':
                     vacantpos = k+i
                 if field[j][i+k] == 'X':
-                    continue
+                    count_x = -1
             if count_x == 3:
                 return (j, vacantpos)
 
-    return (orig_i, orig_j)
+    return 0
 
 def JudgeSlanting(orig_i, orig_j):
     for j in range(15):
@@ -160,7 +161,7 @@ def JudgeSlanting(orig_i, orig_j):
                 if field[i+k][j] == '.':
                     vacantpos = k+i
                 if field[i+k][j] == 'X':
-                    continue
+                    count_x = 0
             if count_x == 4:
                 return (vacantpos, j)
 
@@ -176,7 +177,7 @@ def JudgeEnemy5(orig_i, orig_j, field):
                 if field[i+k][j] == '.':
                     vacantpos = k+i
                 if field[i+k][j] == 'O':
-                    continue
+                    count_x = 0
             if count_x == 4:
                 return (vacantpos, j)
 
@@ -190,7 +191,7 @@ def JudgeEnemy5(orig_i, orig_j, field):
                 if field[j][i+k] == '.':
                     vacantpos = k+i
                 if field[j][i+k] == 'O':
-                    continue
+                    count_x = 0
             if count_x == 4:
                 return (j, vacantpos)
 
@@ -208,7 +209,7 @@ def JudgeEnemy4(orig_i, orig_j, field):
                 if field[i+k][j] == '.':
                     vacantpos = k+i
                 if field[i+k][j] == 'O':
-                    continue
+                    count_x = -1
             if count_x == 3:
                 return (vacantpos, j)
 
@@ -222,12 +223,14 @@ def JudgeEnemy4(orig_i, orig_j, field):
                 if field[j][i+k] == '.':
                     vacantpos = k+i
                 if field[j][i+k] == 'O':
-                    continue
+                    count_x = -1
             if count_x == 3:
                 return (j, vacantpos)
 
     return 0
 
+def JudgeEnemy3(arg):
+    pass
 
 
 # =============================================================================
