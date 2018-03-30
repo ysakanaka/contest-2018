@@ -28,7 +28,14 @@ def Think(field):
             field[i][j] = '.'
             if GetDistance(best_position, CENTER) > GetDistance(position, CENTER):
                 best_position = position
-    bestposition = Judge5stone
+
+    my_position = JudgeEnemy5
+    if my_position != 0:
+        bestposition = Judge5stone
+
+    my_position = Judge5stone
+    if my_position != 0:
+        bestposition = Judge5stone
 
     return best_position
 
@@ -176,7 +183,7 @@ def JudgeEnemy5(orig_i, orig_j):
             if count_x == 4:
                 return (j, vacantpos)
 
-    return (orig_i, orig_j)
+    return 0
 
 
 # =============================================================================
