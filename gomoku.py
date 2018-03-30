@@ -18,7 +18,7 @@ def Think(field):
             # Assume to put a stone on (i, j).
             field[i][j] = 'O'
             if CanHaveFiveStones(field, position):
-                DebugPrint('I have a winning choice at (%d, %d)' % (i, j))
+                #DebugPrint('I have a winning choice at (%d, %d)' % (i, j))
                 return position
             # Revert the assumption.
             field[i][j] = '.'
